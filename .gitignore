@@ -1,0 +1,36 @@
+# --- Restricted course data (do NOT commit) ---
+data/raw/
+data/processed/
+*.zip
+
+# --- Portable Git installation bundled in this folder ---
+Git/
+
+# --- Secrets / environment ---
+.env
+.env.*
+!.env.example
+
+# --- Python virtual environments ---
+.venv/
+venv/
+env/
+
+# --- Python caches / bytecode ---
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# --- Temporary / OS / editor files ---
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini
