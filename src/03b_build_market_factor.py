@@ -34,6 +34,8 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 ROOT = Path(__file__).resolve().parent.parent
 PROC = ROOT / "data" / "processed"
 OUT = ROOT / "outputs" / "tables"
+PROC.mkdir(parents=True, exist_ok=True)
+OUT.mkdir(parents=True, exist_ok=True)
 
 MONTHLY_PKL = PROC / "monthly_stock_clean.pkl"
 FF_CSV = ROOT / "data" / "raw" / "02_Monthly_Stocks_and_Factors" / "data" / "F-F factors and RF.csv"

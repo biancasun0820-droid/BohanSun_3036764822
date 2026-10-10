@@ -1,0 +1,7 @@
+factor_set,factor,median_delta_r2,mean_delta_r2,median_partial_r2,mean_partial_r2,n_portfolios
+reconstructed,MKT_RF,0.577551,0.619671,0.953077,0.959573,6
+reconstructed,SMB,0.068364,0.073249,0.553438,0.489956,6
+reconstructed,HML,0.039488,0.067657,0.646428,0.632872,6
+official,MKT_RF,0.580151,0.631321,0.951264,0.954523,6
+official,SMB,0.067585,0.073251,0.54014,0.47695,6
+official,HML,0.038095,0.068401,0.674533,0.608614,6

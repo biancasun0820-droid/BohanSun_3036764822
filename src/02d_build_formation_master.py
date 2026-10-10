@@ -36,6 +36,8 @@ ROOT = Path(__file__).resolve().parent.parent
 PROC = ROOT / "data" / "processed"
 OUT = ROOT / "outputs" / "tables"
 RAW_CCM = ROOT / "data" / "raw" / "04_Supplementary_Data" / "data" / "CCM.csv"
+PROC.mkdir(parents=True, exist_ok=True)
+OUT.mkdir(parents=True, exist_ok=True)
 
 MONTHLY_PKL = PROC / "monthly_stock_clean.pkl"
 BE_PKL = PROC / "book_equity.pkl"

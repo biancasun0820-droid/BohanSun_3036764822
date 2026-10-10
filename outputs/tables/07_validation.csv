@@ -1,0 +1,10 @@
+test,result,detail
+units_decimal,PASS,组合百分比 /100；RF/MKT_RF/market 均为小数；统一小数口径
+market_identity,PASS,market = MKT_RF + RF = mkt 列，最大差 1.4e-17
+date_alignment,PASS,6 组合 + RF + 市场同索引，294 个月连续无缺口
+no_missing,PASS,组合收益 0 个 NaN，未对缺失值填零
+cagr_vs_growth,PASS,CAGR == 终值^(12/N)−1，全资产一致
+initial_wealth,PASS,财富指数从 1 起，首月 wealth[0]==1+r[0]
+max_dd_range,PASS,"最大回撤 ∈ [0,1)（含初始峰值）"
+pct_positive_range,PASS,"正收益月占比 ∈ [0,100]"
+no_identifier_leakage,PASS,仅聚合指标，不写 PERMNO/PERMCO/gvkey/证券级数据

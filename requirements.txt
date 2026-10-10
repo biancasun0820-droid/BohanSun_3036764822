@@ -1,0 +1,7 @@
+# ECON6067 FF3 replication — verified environment (STEP 6B)
+# Python 3.14.3 (Windows 11)
+numpy==2.5.3
+pandas==3.0.6
+matplotlib==3.11.2
+scipy==1.18.1
+statsmodels==0.15.0

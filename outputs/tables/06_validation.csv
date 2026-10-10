@@ -1,0 +1,9 @@
+test,result,detail
+date_alignment,PASS,mine/excess/off 逐月一致，294 个月连续无缺口
+units,PASS,组合百分比 /100；因子为小数；官方 /100；全部小数口径
+no_nan,PASS,收益与因子无 NaN
+delta_nonnegative,PASS,完整模型嵌套缩减模型，delta R2 均应 ≥0；负值行数 0
+partial_in_01,PASS,"partial R2 应在 [0,1]；越界行数 0"
+rank_1_to_3,PASS,每个组合 3 个因子 rank 恰为 1/2/3
+per_portfolio_3_factors,PASS,每组合 × 每因子集 3 行（drop-one）
+main_uses_reconstructed,PASS,主分析只用自建因子；官方因子仅在稳健性出现

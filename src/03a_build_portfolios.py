@@ -37,6 +37,8 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 ROOT = Path(__file__).resolve().parent.parent
 PROC = ROOT / "data" / "processed"
 OUT = ROOT / "outputs" / "tables"
+PROC.mkdir(parents=True, exist_ok=True)
+OUT.mkdir(parents=True, exist_ok=True)
 
 MASTER_PKL = PROC / "formation_master.pkl"
 MONTHLY_PKL = PROC / "monthly_stock_clean.pkl"
