@@ -1,0 +1,8 @@
+test,result,detail
+date_alignment,PASS,mine/excess/off 三索引逐月一致，294 个月连续无缺口
+rf_subtraction,PASS,excess=组合收益−RF；RF 与官方 RF/100 最大差 0.0e+00
+units,PASS,组合百分比 /100；因子本为小数；官方 /100；全部小数口径
+period_counts,PASS,P1/P2/P3 = 102/120/72 个月
+sample_coverage,PASS,294 个月，无 NaN
+hac_implementation,PASS,手算 Newey-West 与 statsmodels 交叉校验，SE 差 4.34e-19
+main_uses_reconstructed_only,PASS,主分析（PART A/B）只用自建因子；官方因子仅在 PART C 稳健性出现

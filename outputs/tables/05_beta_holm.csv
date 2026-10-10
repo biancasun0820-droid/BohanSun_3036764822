@@ -1,0 +1,7 @@
+portfolio,test,q,wald_stat,p,holm_threshold,holm_reject_5pct
+S/L,beta,6,76.598302,0.0,0.008333,True
+B/N,beta,6,34.930467,4e-06,0.01,True
+S/H,beta,6,31.143309,2.4e-05,0.0125,True
+B/L,beta,6,29.460263,5e-05,0.016667,True
+B/H,beta,6,26.036236,0.000219,0.025,True
+S/N,beta,6,9.848917,0.13116,0.05,False
