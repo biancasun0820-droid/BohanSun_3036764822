@@ -5,8 +5,9 @@
 Replicate the Fama–French three-factor model using monthly CRSP stock data and
 Compustat accounting data: construct the size (SMB) and value (HML) factors via
 the standard 2×3 portfolio sorts, reconstruct MKT-RF, validate the factors
-against official Ken French factors, and run two focused extensions
-(premia/exposure stability; factor importance).
+against official Ken French factors, run a main time-stability extension (premia
+and exposure stability across subperiods), and add two supplementary analyses
+(factor importance and historical portfolio performance).
 
 ## Repository layout
 
@@ -22,7 +23,8 @@ src/                           # 分析脚本（按顺序执行）
   04_validate_official.py       官方因子校验
   05_extension_stability.py     扩展：溢价与暴露的跨期稳定性
   06_factor_importance.py       扩展：三因子对组合收益的重要性
-run_all.py                     # 端到端编排器（01 → … → 06，遇错即停）
+  07_investment_performance.py  扩展：历史投资表现（CAGR/Sharpe/最大回撤）
+run_all.py                     # 端到端编排器（01 → … → 07，遇错即停）
 requirements.txt               # 已验证的依赖版本
 data/raw/                      # 受限课程数据（不提交）
 data/processed/                # 中间 pickle（不提交）
