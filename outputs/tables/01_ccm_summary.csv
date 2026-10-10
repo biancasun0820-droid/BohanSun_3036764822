@@ -1,0 +1,10 @@
+metric,value
+rows,39761
+LINKENDDT_empty,0
+LINKENDDT_E,10939
+LINKENDDT_date,28822
+duplicate_full_rows,0
+duplicate_key_gvkey_LPERMNO_LINKDT,0
+gvkey_with_multiple_links,4211
+max_links_per_gvkey,10
+overlapping_link_pairs,412

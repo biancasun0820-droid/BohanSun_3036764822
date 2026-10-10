@@ -1,0 +1,10 @@
+test,result,detail
+date_coverage,PASS,200107~202512，294 个月（期望 294）
+duplicate_security_month,PASS,"dup (PERMNO,YYYYMM)=0"
+no_lookahead_weight,PASS,权重=严格上一自然月 MthCap（prev_month 匹配），非当月
+positive_lagged_weights,PASS,"参与 lag_cap 全部 >0；min 月权重和=8,186,235,271.3（MthCap 原单位千美元）"
+return_units_decimal,PASS,mkt 均值=0.00858（小数，0.01=1%）
+missing_returns_excluded,INFO,"MthRet 缺失 432、非有限 0；严格上月市值缺失 6,304（该月零权重）"
+delisting_returns_included,PASS,"退市收益行(MthDelFlg!=N)纳入 1,042"
+security_equals_company,PASS,证券级 vs 公司级市场收益最大差 1.39e-17
+official_mkt_rf_not_used,PASS,官方 Mkt-RF 仅用于校验，未参与构造

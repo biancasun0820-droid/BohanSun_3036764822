@@ -1,0 +1,7 @@
+metric,value
+n_both,1264374.0
+n_equal_exact,1264374.0
+n_differ,0.0
+max_abs_diff,0.0
+n_prevcap_only,11568.0
+n_lag_only,0.0

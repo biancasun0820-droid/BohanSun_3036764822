@@ -1,0 +1,14 @@
+test,result,detail
+eligible_ff_exact_count,PASS,"n=98,443"
+funnel_closes,PASS,"sum=107,844 == 107,844"
+one_assignment_per_company_year,PASS,dup=0
+all_portfolios_valid,PASS,"6 portfolios S/L..B/H, no invalid"
+exchange_coding,PASS,"N=NYSE/A=AMEX/Q=NASDAQ, no other codes"
+no_lookahead_by_construction,PASS,"size=June t ME, value=Dec t-1 ME, returns July t+ weighted by prior-month ME"
+return_units_decimal,PASS,"co_ret mean=0.0098 (decimal, 0.01=1%)"
+weight_sums_positive,PASS,"min portfolio-month weight(ME)=157,764,243.5 (USD thousands, MthCap 原单位)>0"
+empty_portfolios,PASS,portfolio-month rows=1764; missing months in pivot=0
+missing_monthly_returns,INFO,security-month MthRet missing=389; dropped from panel
+missing_lag_me,INFO,"security-month lag ME missing=5,467"
+extreme_returns_not_winsorized,INFO,co_ret max=26.5838 min=-0.9958
+partial_2025_holding,INFO,formation 2025 holds only Jul-Dec 2025 (data ends 202512)

@@ -34,3 +34,15 @@ __pycache__/
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# --- Restricted microdata outputs (stock/company-level identifiers; do NOT commit) ---
+# These tables expose PERMNO / PERMCO / gvkey / ticker-level rows (prices, caps,
+# book equity, link records). Aggregate QA summaries are committed separately.
+outputs/tables/01_monthly_mcap_outliers.csv
+outputs/tables/02c_sequential_multigvkey.csv
+outputs/tables/02d_be_multi_datadate.csv
+outputs/tables/02d_example_2021.csv
+outputs/tables/02d_gvkey_conflict.csv
+outputs/tables/02d_gvkey_conflict_detail.csv
+outputs/tables/02d_link_permco_disagree.csv
+outputs/tables/02d_multi_security.csv

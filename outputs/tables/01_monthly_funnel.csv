@@ -1,0 +1,12 @@
+scope,criterion,excluded_obs,kept_obs
+independent,SecurityType != EQTY,660532.0,
+independent,SecuritySubType != COM,660532.0,
+independent,ShareType != NS,272363.0,
+independent,"PrimaryExch not in {N,A,Q}",410571.0,
+independent,USIncFlg != Y,316798.0,
+sequential,全部,,2423212.0
+sequential,+ EQTY,,1762680.0
+sequential,+ COM,,1762680.0
+sequential,+ NS,,1596725.0
+sequential,+ N/A/Q,,1567318.0
+sequential,+ USIncFlg=Y,,1391902.0

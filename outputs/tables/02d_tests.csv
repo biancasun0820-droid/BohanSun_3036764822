@@ -1,0 +1,13 @@
+test,result,detail
+"unique_key_(PERMCO,formation_year)",PASS,duplicates=0
+permno_primary_notna,PASS,missing=0
+june_me_positive_all_rows,PASS,me_june<=0 rows=0
+join_no_expansion,PASS,all per-company merges on unique PERMCO
+same_permno_same_date_multigvkey,PASS,0 simultaneous ambiguity
+gvkey_multi_permco_same_year,PASS,count=0
+ccm_lpermco_matches_crsp_permco,PASS,disagreements=0
+missing_be_rows,INFO,rows=1637
+nonpositive_be_rows,INFO,rows=5835
+missing_dec_me_rows,INFO,rows=3012
+missing_june_me_rows,INFO,rows=0
+invalid_links_no_standard,INFO,"securities=2,136 (excluded_by_LS/JN=0)"

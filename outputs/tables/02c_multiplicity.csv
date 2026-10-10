@@ -1,0 +1,9 @@
+direction,k,count
+LPERMNO->gvkey,1,27953
+LPERMNO->gvkey,2,658
+LPERMNO->gvkey,3,13
+gvkey->LPERMNO,1,27113
+gvkey->LPERMNO,2,986
+gvkey->LPERMNO,3,66
+gvkey->LPERMNO,4,5
+gvkey->LPERMNO,5,1
