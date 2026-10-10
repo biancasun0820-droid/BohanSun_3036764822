@@ -1,0 +1,5 @@
+test,result,detail
+no_missing_months,PASS,294/294 个月，无缺口、无 NaN
+units_decimal,PASS,官方 /100 转小数；自建本为小数；月均值量级 <5%
+no_lookahead_inherited,PASS,因子由 3A/3B 用「严格上月市值」构造（已在其内验证），本步未再构造
+official_series_decimal_aligned,PASS,MKT_RF/SMB/HML 官方列与自建列逐月对齐，无错位
