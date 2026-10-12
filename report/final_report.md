@@ -70,7 +70,10 @@ via the `MthDelFlg` flag so that the monthly return is total and not survivorshi
 98,443 eligible firm-years over formation years 2001–2025 (`03a_eligibility_funnel.csv`), with the
 NYSE breakpoint universe containing roughly 1,250–1,565 firms per year (`03a_breakpoints.csv`). The
 final monthly sample runs **July 2001–December 2025, 294 consecutive months**, with no gaps or
-missing values (`04_validation.csv`, `07_validation.csv`).
+missing values (`04_validation.csv`, `07_validation.csv`). The requested analysis window opens in
+2000, but the reconstructed factors begin in July 2001 owing to the accounting-data boundary: the
+first formation year requires the prior fiscal year's book equity and accounting history, so factors
+are first held from July 2001 (see §10).
 
 **Variables.** Monthly total return (decimal); prior-month market equity (price × shares) for
 value-weighting; book equity constructed from Compustat items; lagged BE/ME as the value signal;
@@ -114,6 +117,12 @@ Annualised means are close as well: MKT-RF 8.66% (vs 8.77% official), SMB 0.75% 
 in HML, whose correlation falls to 0.955 in 2001–2009 but is 0.974–0.989 thereafter
 (`04_subperiod_stats.csv`). The largest single-month deviations occur in October 2001 (SMB), February 2021 (HML), and
 November 2008 (MKT-RF) (`04_factor_stats.csv`, `max_abs_dev_month`).
+
+The replication is visualised in `outputs/figures/04_ts_comparison.png` (monthly factor series) and
+`04_cumulative_factors.png` (cumulative factor index, the product of 1 + monthly factor return starting
+at 1.0). The cumulative index is illustrative: for the long-short SMB and HML factors it is a synthetic
+compounded series, not an implementable strategy net of costs. The reconstructed and official cumulative
+tracks are visually indistinguishable for MKT-RF and remain close for SMB and HML, consistent with Table 1.
 
 ## 6. Main Extension: Time Stability of Premia and Exposures
 
@@ -160,6 +169,12 @@ month (p = 0.028)**—with all other portfolios insignificant (`05_alpha_zero.cs
 are mostly insignificant, except B/L in P3 (+0.17%, p = 0.007) and B/N in P3 (−0.27%, p = 0.019).
 These are in-sample, factor-adjusted estimates, not investable returns.
 
+A robustness check re-estimates the premia and exposure tests using the official Ken French factors in
+place of the reconstructed factors (`05_robustness_premia_regression.csv`,
+`05_robustness_exposure_wald.csv`). Both conclusions are unchanged: premia stability is again not
+rejected (HAC Wald p = 0.269, 0.306, and 0.395 for MKT-RF, SMB, and HML), and exposure stability is
+again rejected for the same five of six portfolios, with S/N the sole non-rejection (p = 0.190).
+
 ## 7. Supplementary Analysis 1: Factor Importance (drop-one ΔR²)
 
 For each portfolio, the full three-factor model is compared with three reduced models that each drop
@@ -179,7 +194,8 @@ with portfolio type—SMB ranks second in the three small portfolios, HML ranks 
 large portfolios. All factor loadings are statistically significant under HAC(6) except SMB on B/N
 (t = 0.14) and B/H (t = 0.53) (`06_hac_significance.csv`). **Important caveat:** the six portfolios
 themselves define SMB and HML, so ΔR² is a *within-sample variance decomposition*, not a test of the
-factors' pricing ability on independent assets. This is descriptive.
+factors' pricing ability on independent assets. This is descriptive. The per-portfolio importance is
+visualised in `outputs/figures/06_factor_importance.png`.
 
 ## 8. Supplementary Analysis 2: Historical Portfolio Performance
 
@@ -203,7 +219,8 @@ the shallowest drawdown over the full sample; the small-value portfolio (S/H) ha
 arithmetic mean but the largest volatility and worst drawdown. **The best style is not persistent**:
 S/H leads in P1 (CAGR 7.96%), while B/L leads in P2 (15.05%) and P3 (17.24%)
 (`07_performance_periods.csv`). These are historical, gross-of-cost descriptions and carry no
-implication for future returns.
+implication for future returns. The cumulative growth of $1 and the risk-return profile are shown in
+`outputs/figures/07_growth_of_one.png` and `07_risk_return.png`.
 
 ## 9. Scope
 
@@ -221,8 +238,9 @@ sort beyond the six portfolios of the construction grid. This scope is stated fo
    SecurityType/SubType/ShareType/exchange flags, not the exact share-code filter.
 2. Delisting returns are included but the delisting coverage is an approximation of the full CRSP
    delisting-return methodology.
-3. The sample begins in July 2001 owing to the Compustat accounting-history boundary and ends in
-   December 2025; results are sensitive to the interval.
+3. The target period opens in 2000, but the reconstructed sample begins in July 2001 owing to the
+   Compustat accounting-history boundary (the first formation year needs fiscal-year t−1 book equity
+   plus accounting history) and ends in December 2025; results are sensitive to the interval.
 4. The 2×3 grid (six portfolios) is used throughout; the 25-portfolio test is not reproduced (see §9).
 5. Performance is gross of transaction costs, taxes, and implementation frictions, with annual
    rebalancing.

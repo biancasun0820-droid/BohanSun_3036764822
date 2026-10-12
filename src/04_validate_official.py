@@ -274,6 +274,32 @@ fig.tight_layout()
 fig.savefig(FIG / "04_rolling_corr.png", dpi=150, bbox_inches="tight")
 plt.close(fig)
 
+# 6d. 累计因子指数（自建 vs 官方；从小数因子月收益复利，起点 1.0）
+#     单位：cmp 中的因子月收益为小数（0.01=1%），故直接用 (1 + r) 复利，绝不把百分比当小数复利。
+#     图示性说明：对 SMB/HML 这类多空因子，累计指数是合成复利序列，非可实盘的净成本策略。
+fig, axes = plt.subplots(3, 1, figsize=(9, 10), sharex=False)
+x0 = dt.iloc[0] - pd.DateOffset(months=1)
+xd = np.concatenate([[np.datetime64(x0)], dt.values.astype("datetime64[ns]")])
+for ax, f in zip(axes, FACTORS):
+    cm = np.concatenate([[1.0], np.cumprod(1.0 + cmp[f"{f}_mine"].values)])
+    co = np.concatenate([[1.0], np.cumprod(1.0 + cmp[f"{f}_off"].values)])
+    ax.plot(xd, cm, color=C_MINE, linewidth=1.2, label="mine (reconstructed)")
+    ax.plot(xd, co, color=C_OFF, linewidth=1.2, label="official (FF)")
+    ax.set_title(f, loc="left", fontweight="bold")
+    ax.set_ylabel("cumulative index (start = 1.0)")
+    ax.grid(True, which="major", color=C_GRID, linewidth=0.6)
+    ax.legend(frameon=False, loc="upper left", fontsize=8)
+axes[-1].xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
+fig.suptitle("Cumulative factor index (product of 1 + monthly factor return)", y=0.99, fontweight="bold")
+fig.tight_layout(rect=[0, 0.06, 1, 0.98])
+fig.text(0.5, 0.008,
+         "Illustrative cumulative index = product of (1 + monthly factor return), starting at 1.0; "
+         "monthly returns are decimal (0.01 = 1%). For the long-short factors (SMB, HML) this is a "
+         "synthetic compounded index, not an implementable strategy net of costs.",
+         ha="center", va="bottom", fontsize=7.5, color=C_MUTED)
+fig.savefig(FIG / "04_cumulative_factors.png", dpi=150, bbox_inches="tight")
+plt.close(fig)
+
 # ----------------------------------------------------------------------------
 # 7. 校验清单
 # ----------------------------------------------------------------------------
@@ -379,6 +405,8 @@ qa = f"""# STEP 4 官方校验 —— 质量报告
 相关系数衡量**方向/时序**的一致程度，与**水平**无关：即使两个序列每月都朝同一方向、几乎同步，
 只要其中一个整体偏高一个基点，相关仍可 ≈1，但均值差非零。本报告同时报告 相关、均值差、MAE、RMSE、
 最大月差，以同时刻画「同步性」与「水平差」。滚动 36 个月相关见 `04_rolling_corr.png`。
+累计因子指数（自建 vs 官方，从小数因子月收益 `product(1+r)` 复利、起点 1.0）见
+`04_cumulative_factors.png`；该图为**示意性累计指数**，对 SMB/HML 这类多空因子**不构成**可实盘的净成本策略。
 
 ## 5. 极端偏差月诊断（需求 5，仅描述自建侧，不涉个股、不推因果）
 
@@ -415,7 +443,8 @@ qa = f"""# STEP 4 官方校验 —— 质量报告
 
 - 表：`04_factor_stats.csv`、`04_subperiod_stats.csv`、`04_annual_diff.csv`、
   `04_crisis_months.csv`、`04_top_discrepancy_months.csv`、`04_validation.csv`
-- 图：`outputs/figures/04_ts_comparison.png`、`04_discrepancy.png`、`04_rolling_corr.png`
+- 图：`outputs/figures/04_ts_comparison.png`、`04_discrepancy.png`、`04_rolling_corr.png`、
+  `04_cumulative_factors.png`
 
 > 运行约 {time.time() - t0:.0f} 秒。本步未做独立扩展、回归、最终报告。
 """

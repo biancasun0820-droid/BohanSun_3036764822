@@ -51,6 +51,8 @@
 相关系数衡量**方向/时序**的一致程度，与**水平**无关：即使两个序列每月都朝同一方向、几乎同步，
 只要其中一个整体偏高一个基点，相关仍可 ≈1，但均值差非零。本报告同时报告 相关、均值差、MAE、RMSE、
 最大月差，以同时刻画「同步性」与「水平差」。滚动 36 个月相关见 `04_rolling_corr.png`。
+累计因子指数（自建 vs 官方，从小数因子月收益 `product(1+r)` 复利、起点 1.0）见
+`04_cumulative_factors.png`；该图为**示意性累计指数**，对 SMB/HML 这类多空因子**不构成**可实盘的净成本策略。
 
 ## 5. 极端偏差月诊断（需求 5，仅描述自建侧，不涉个股、不推因果）
 
@@ -110,6 +112,7 @@
 
 - 表：`04_factor_stats.csv`、`04_subperiod_stats.csv`、`04_annual_diff.csv`、
   `04_crisis_months.csv`、`04_top_discrepancy_months.csv`、`04_validation.csv`
-- 图：`outputs/figures/04_ts_comparison.png`、`04_discrepancy.png`、`04_rolling_corr.png`
+- 图：`outputs/figures/04_ts_comparison.png`、`04_discrepancy.png`、`04_rolling_corr.png`、
+  `04_cumulative_factors.png`
 
-> 运行约 1 秒。本步未做独立扩展、回归、最终报告。
+> 运行约 4 秒。本步未做独立扩展、回归、最终报告。
